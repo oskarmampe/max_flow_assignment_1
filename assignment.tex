@@ -3,10 +3,13 @@
 % packages
   \usepackage{a4wide}
   \usepackage{tikz}
-  \usepackage{dashrule}
+  \usepackage{amsmath}
+  \usepackage{mathtools}
 
   \tikzset{st/.style = {circle, thick, minimum size=5.0mm, inner sep=0pt, draw},
-           we/.style = {circle, thick, minimum size=2.0mm, inner sep=0pt, draw}}
+           we/.style = {circle, thick, minimum size=2.0mm, inner sep=0pt, draw},
+           b/.style = {circle, fill,  minimum size=1.8mm, inner sep=0pt, draw},
+           a/.style = {        thick, minimum size=2.0mm, inner sep=0pt, draw}}
 
 \pagestyle{empty}
 
@@ -20,9 +23,7 @@
 
 \thispagestyle{empty}
 
-We compute a maximum flow in this network and find a minimum cut as follows.
-The left column shows the actual flow and the right column shows the residual
-network with residual capacities and an augmenting path indicated by bold edges.
+The following minimal cut and maximum flow can be calculated by doing the following. Residual capacities and an augmenting path indicated by bold edges.
 
 \begin{center}
 %%%%%%%%%%%%%% ORIGINAL %%%%%%%%%%%%%%
@@ -55,7 +56,10 @@ Original Network:\\
     \draw[->] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
   %%%%%%%%%%%%%% FIRST PASS %%%%%%%%%%%%%%
-\noindent\makebox[\linewidth]{\hdashrule{\textwidth}{0.4pt}{3mm 3pt}}
+  \newpage
+  \subsection*{First Pass}
+  Original Network:\\
+	\hfill
   \begin{tikzpicture}[scale=1.5, >=stealth]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -83,6 +87,9 @@ Original Network:\\
     \draw[->] (h) to[edge label =0, pos=.50] (t);
     \draw[->] (i) to[edge label =0, pos=.50] (t);    
   \end{tikzpicture}
+  \hspace*{\fill}
+  
+  Residual Network:\\
     \begin{tikzpicture}[scale=1.5, >=stealth]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -111,8 +118,11 @@ Original Network:\\
     \draw[->, very thick] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
   
+  \newpage
   %%%%%%%%%%%%%% SECOND PASS %%%%%%%%%%%%%%
-   \noindent\makebox[\linewidth]{\hdashrule{\textwidth}{0.4pt}{3mm 3pt}}
+  \subsection*{Second Pass}
+  Original Network:\\
+  	\hfill
     \begin{tikzpicture}[scale=1.5, >=stealth]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -140,6 +150,9 @@ Original Network:\\
     \draw[->] (h) to[edge label =0, pos=.50] (t);
     \draw[->] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
+ \hspace*{\fill}  
+  
+  Residual Network:\\
     \begin{tikzpicture}[scale=1.5, >=stealth, bend angle=10]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -169,9 +182,12 @@ Original Network:\\
     \draw[->, very thick] (h) to[edge label =8, pos=.50] (t);
     \draw[<-] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
-  
+  \newpage
   %%%%%%%%%%%%%% THIRD PASS %%%%%%%%%%%%%%
-\noindent\makebox[\linewidth]{\hdashrule{\textwidth}{0.4pt}{3mm 3pt}}
+  \subsection*{Third Pass}
+  
+  Original Network:\\
+	\hfill
  \begin{tikzpicture}[scale=1.5, >=stealth]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -199,6 +215,9 @@ Original Network:\\
     \draw[->] (h) to[edge label =2, pos=.50] (t);
     \draw[->] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
+     \hspace*{\fill} 
+    
+  Residual Network:\\
     \begin{tikzpicture}[scale=1.5, >=stealth, bend angle=10]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -230,9 +249,12 @@ Original Network:\\
     \draw[<-] (h) to[bend right, edge label'=2, pos=.50] (t);
     \draw[<-] (i) to[edge label =2, pos=.50] (t);   
   \end{tikzpicture}
-  
+  \newpage
   %%%%%%%%%%%%%% FOURTH PASS %%%%%%%%%%%%%%
-\noindent\makebox[\linewidth]{\hdashrule{\textwidth}{0.4pt}{3mm 3pt}}
+	\subsection*{Fourth Pass}
+	
+	Original Network:\\
+	\hfill
  \begin{tikzpicture}[scale=1.5, >=stealth]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -260,6 +282,9 @@ Original Network:\\
     \draw[->] (h) to[edge label =2, pos=.50] (t);
     \draw[->] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
+   \hspace*{\fill} 
+   
+  Residual Network:\\
     \begin{tikzpicture}[scale=1.5, >=stealth, bend angle=10]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -294,9 +319,11 @@ Original Network:\\
     \draw[<-] (h) to[bend right, edge label'=2, pos=.50] (t);
     \draw[<-] (i) to[edge label =2, pos=.50] (t);   
   \end{tikzpicture}
-  
+  \newpage
    %%%%%%%%%%%%%% FIFTH PASS %%%%%%%%%%%%%%
-\noindent\makebox[\linewidth]{\hdashrule{\textwidth}{0.4pt}{3mm 3pt}}
+	\subsection*{Fifth Pass}
+   Original Network:\\
+	\hfill
  \begin{tikzpicture}[scale=1.5, >=stealth]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -324,6 +351,9 @@ Original Network:\\
     \draw[->] (h) to[edge label =4, pos=.50] (t);
     \draw[->] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
+   \hspace*{\fill} 
+   
+  Residual Network:\\
     \begin{tikzpicture}[scale=1.5, >=stealth, bend angle=10]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -361,9 +391,11 @@ Original Network:\\
     \draw[<-] (h) to[bend right, edge label'=4, pos=.50] (t);
     \draw[<-] (i) to[edge label =2, pos=.50] (t);   
   \end{tikzpicture}
-  
+  \newpage
   %%%%%%%%%%%%%% SIXTH PASS %%%%%%%%%%%%%%
-\noindent\makebox[\linewidth]{\hdashrule{\textwidth}{0.4pt}{3mm 3pt}}
+  \subsection*{Sixth Pass}
+  Original Network:\\
+	\hfill
  \begin{tikzpicture}[scale=1.5, >=stealth]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -391,6 +423,9 @@ Original Network:\\
     \draw[->] (h) to[edge label =6, pos=.50] (t);
     \draw[->] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
+   \hspace*{\fill} 
+   
+  Residual Network:\\
     \begin{tikzpicture}[scale=1.5, >=stealth, bend angle=10]
     \node[st] (s) at (0,2) {s};
     \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
@@ -431,27 +466,35 @@ Original Network:\\
     \draw[<-] (h) to[bend right, edge label'=6, pos=.50] (t);
     \draw[<-] (i) to[edge label =2, pos=.50] (t);   
   \end{tikzpicture}
-  
+  \newpage
   %%%%%%%%%%%%%% SEVENTH PASS %%%%%%%%%%%%%%
-\noindent\makebox[\linewidth]{\hdashrule{\textwidth}{0.4pt}{3mm 3pt}}
+  \subsection*{Seventh Pass}
+  Original Network:\\
+	\hfill
  \begin{tikzpicture}[scale=1.5, >=stealth]
-    \node[st] (s) at (0,2) {s};
-    \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
-    \node[we] (d) at (4,0) {}; \node[we] (e) at (4,2) {}; \node[we] (f) at (4,4) {}; 
-    \node[we] (g) at (6,0) {}; \node[we] (h) at (6,2) {}; \node[we] (i) at (6,4) {}; 
-    \node[st] (t) at (8,2) {t};
+    \node[a, label=left:s] (s) at (0,2) {};
+    \node[a, label=below:$v_1$] (a) at (2,0) {};
+    \node[b, label=below:$v_2$] (b) at (2,2) {};
+    \node[a, label=above:$v_3$] (c) at (2,4) {}; 
+    \node[b, label=below:$v_4$] (d) at (4,0) {};
+    \node[a, label=below:$v_5$] (e) at (4,2) {};
+    \node[b, label=above:$v_6$] (f) at (4,4) {}; 
+    \node[b, label=below:$v_7$] (g) at (6,0) {};
+    \node[b, label=below:$v_8$] (h) at (6,2) {};
+    \node[a, label=above:$v_9$] (i) at (6,4) {}; 
+    \node[b, label=right:t] (t) at (8,2) {};
     \draw[->] (s) to[edge label'=5, pos=.50] (a);
-    \draw[->] (s) to[edge label =2, pos=.50] (b);
+    \draw[->, dashed] (s) to[edge label =2, pos=.50] (b);
     \draw[->] (s) to[edge label =4, pos=.50] (c);
-    \draw[->] (a) to[edge label'=3, pos=.50] (d);
+    \draw[->, dashed] (a) to[edge label'=3, pos=.50] (d);
     \draw[->] (b) to[edge label =0, pos=.50] (e);
-    \draw[->] (c) to[edge label =2, pos=.50] (f);
+    \draw[->, dashed] (c) to[edge label =2, pos=.50] (f);
     \draw[->] (a) to[edge label =2, pos=.25] (e);
     \draw[->] (b) to[edge label =0, pos=.25] (f);
     \draw[->] (c) to[edge label'=2, pos=.25] (e);
     \draw[->] (b) to[edge label'=2, pos=.25] (d);
     \draw[->] (d) to[edge label'=2, pos=.50] (g);
-    \draw[->] (e) to[edge label =2, pos=.50] (h);
+    \draw[->, dashed] (e) to[edge label =2, pos=.50] (h);
     \draw[->] (f) to[edge label =0, pos=.50] (i);
     \draw[->] (d) to[edge label =3, pos=.25] (h);
     \draw[->] (e) to[edge label =2, pos=.25] (i);
@@ -459,13 +502,22 @@ Original Network:\\
     \draw[<-] (e) to[edge label =0, pos=.75] (g);
     \draw[->] (g) to[edge label'=2, pos=.50] (t);
     \draw[->] (h) to[edge label =7, pos=.50] (t);
-    \draw[->] (i) to[edge label =2, pos=.50] (t);    
+    \draw[->, dashed] (i) to[edge label =2, pos=.50] (t);    
   \end{tikzpicture}
+   \hspace*{\fill} 
+   
+  Residual Network:\\
     \begin{tikzpicture}[scale=1.5, >=stealth, bend angle=10]
     \node[st] (s) at (0,2) {s};
-    \node[we] (a) at (2,0) {}; \node[we] (b) at (2,2) {}; \node[we] (c) at (2,4) {}; 
-    \node[we] (d) at (4,0) {}; \node[we] (e) at (4,2) {}; \node[we] (f) at (4,4) {}; 
-    \node[we] (g) at (6,0) {}; \node[we] (h) at (6,2) {}; \node[we] (i) at (6,4) {}; 
+    \node[we, label=below:$v_1$] (a) at (2,0) {};
+    \node[we, label=below:$v_2$] (b) at (2,2) {};
+    \node[we, label=above:$v_3$] (c) at (2,4) {}; 
+    \node[we, label=below:$v_4$] (d) at (4,0) {};
+    \node[we, label=below:$v_5$] (e) at (4,2) {};
+    \node[we, label=above:$v_6$] (f) at (4,4) {}; 
+    \node[we, label=below:$v_7$] (g) at (6,0) {};
+    \node[we, label=below:$v_8$] (h) at (6,2) {};
+    \node[we, label=above:$v_9$] (i) at (6,4) {}; 
     \node[st] (t) at (8,2) {t};
     \draw[->] (s) to[bend left, edge label=2, pos=.50] (a);
     \draw[<-] (s) to[bend right, edge label'=5, pos=.50] (a);
@@ -490,7 +542,7 @@ Original Network:\\
     \draw[->] (f) to[edge label =6, pos=.50] (i);
     %\draw[<-, very thick] (f) to[bend right, edge label'=2, pos=.50] (i);
     %\draw[->, very thick] (d) to[bend left, edge label=1, pos=.25] (h);
-    \draw[<-] (d) to[edge label'=3, pos=.25] (h);
+    \draw[<-] (d) to[edge label=3, pos=.25] (h);
     \draw[->] (e) to[bend left, edge label=1, pos=.20] (i);
     \draw[<-] (e) to[bend right, edge label'=2, pos=.20] (i);
     \draw[->] (f) to[bend left, edge label=1, pos=.20] (h);
@@ -505,8 +557,14 @@ Original Network:\\
 \end{center}
 
 \begin{enumerate}
-\item The last flow has value 11. 
-\item A minimal cut  is indicated by the dashed lines. 
+\item The maximum flow has value 11. Formally 
+\begin{equation*}
+  |f| = f(\{s\}, \; V \backslash \{s\}) =  \sum_{\mathclap{\substack{(a,b) \; \; \in \\ <\{s\},\; V \backslash \{s\}>}}} f(a,b) - \sum_{\mathclap{\substack{(b,a) \; \; \in \\ <\{s\},\; V \backslash \{s\}>}}} f(b,a) = 2 + 2 + 7 = 11
+\end{equation*}
+\item A minimal cut  is indicated by the dashed lines on the original network. However, more formally, $<\{s, v_1, v_3, v_5, v_9 \}, \{t, v_2, v_4, v_6, v_7, v_8 \}>$ is the minimal cut, the edges being $(s, v_2), (v_1, v_4), (v_3, v_6), (v_9, t), (v_5, v_8)$. Finally the cut's capacity is 11, as 
+\begin{equation*}
+c(A,B) = \sum_{\mathclap{{(a,b) \; \; \in \; \; <A, B>}}} c(a,b) = 2+2+2+2+3 = 11
+\end{equation*}
 \end{enumerate}
 
 
